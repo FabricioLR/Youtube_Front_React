@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContex } from '../../contexts/auth'
 import style from "./style.module.css"
-import { useNavigate } from 'react-router'
 import img_login from "../../images/withoutlogin.png"
 
 type Arquivo = {
@@ -13,13 +12,6 @@ type Arquivo = {
 function Profile() {
     const { user, ContextChangeImage } = useContext(AuthContex)
     const [image, setImage] = useState<Arquivo | null>()
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        if (!user){
-           // navigate("/")
-        }
-    }, [])
 
     function changeImage(){
         if (image && user){

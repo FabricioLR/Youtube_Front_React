@@ -24,7 +24,7 @@ function Watch() {
     const { id } = useParams()
     
     useEffect(() => {
-        api.post("/getexpecifyvideo", {
+        api.post("/GetVideo", {
             videoId: id
         })
         .then((response) => {

@@ -24,7 +24,7 @@ function Search() {
     const { nameSearch } = useParams()
 
     useEffect(() => {
-        api.post("/searchvideos", {
+        api.post("/SearchVideos", {
             namesearch: nameSearch
         })
         .then((response) => setVideos(response.data.videos))

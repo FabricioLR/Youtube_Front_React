@@ -17,7 +17,7 @@ function VideoSearch(props: VideoSearchProps) {
     const navigate = useNavigate()
 
     async function ShowVideo(id: Number){
-        await api.put("/updatevisualizacoes", {
+        await api.put("/UpdateVisualizations", {
             videoId: id
         })
         navigate("/watch/" + id)

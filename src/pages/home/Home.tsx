@@ -31,7 +31,7 @@ function Home() {
     const [progress, setProgress] = useState(0)
 
     useEffect(() => {
-        api.get("/getvideos")
+        api.get("/GetVideos")
         .then((response) => {
             setVideos(response.data.videos)
         })
@@ -41,7 +41,7 @@ function Home() {
         if (user){
             const data = new FormData()
             data.append("file", arquivo)
-            api.post("/addvideo", data, {
+            api.post("/CreateVideo", data, {
                 headers: {
                     nome: name, 
                     owner: String(user.id)
@@ -67,7 +67,7 @@ function Home() {
     }
 
     async function ShowVideo(id: number){
-        await api.put("/updatevisualizacoes", {
+        await api.put("/UpdateVisualizations", {
             videoId: id
         })
         navigate("/watch/" + id)

@@ -37,7 +37,7 @@ export function AuthProvider(props: AuthProviderProps){
     const [user, setUser] = useState<user | null>(null)
 
     async function ContextLogin({email, senha}: LoginProps){
-        const response = await api.post("/authenticate", {
+        const response = await api.post("/Authenticate", {
             email: email, senha: senha
         })
         if (response.data){
@@ -47,7 +47,7 @@ export function AuthProvider(props: AuthProviderProps){
     }
 
     async function ContextRegister({email, nome, senha}: RegisterProps){
-        const response = await api.post("/register", {
+        const response = await api.post("/Register", {
             email: email, senha: senha, nome: nome
         })
         if (response.data){
@@ -68,7 +68,7 @@ export function AuthProvider(props: AuthProviderProps){
 
         api.defaults.headers.common.authorizationtoken = String(localStorage.getItem("token"))
 
-        api.get("/profile")
+        api.get("/AuthenticateByToken")
         .then((response) => {
             setUser(response.data.user)
         })
@@ -81,8 +81,7 @@ export function AuthProvider(props: AuthProviderProps){
         
         api.defaults.headers.common.authorizationtoken = String(localStorage.getItem("token"))
 
-        const response = await api.post("/ChangeImage", data)
-        console.log(response)
+        const response = await api.post("/ChangeUserImage", data)
     }
 
     return (
