@@ -83,6 +83,8 @@ function Home() {
         document.getElementById(styleProfile.menu)?.classList.toggle(styleProfile.activeProfile)
     }
 
+    console.log(user)
+
     return (
         <>
             <MenuVideo functionMenu={ShowMenu} functionSendVideo={SendVideo} progress={progress}/>

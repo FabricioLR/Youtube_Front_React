@@ -41,7 +41,7 @@ export function AuthProvider(props: AuthProviderProps){
             email: email, senha: senha
         })
         if (response.data){
-            localStorage.setItem("token", response.data.user.token)
+            localStorage.setItem("token", response.data.token)
             setUser(response.data.user)
         }
     }
@@ -51,8 +51,7 @@ export function AuthProvider(props: AuthProviderProps){
             email: email, senha: senha, nome: nome
         })
         if (response.data){
-            localStorage.setItem("token", response.data.user.token)
-            localStorage.setItem("teste", "teset")
+            localStorage.setItem("token", response.data.token)
             setUser(response.data.user)
         }
     }
