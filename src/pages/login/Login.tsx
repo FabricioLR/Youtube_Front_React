@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router'
 
 function Login() {
     const navigate = useNavigate()
-    const { ContextLogin } = useContext(AuthContex)
+    const { ContextLogin, user } = useContext(AuthContex)
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
 
