@@ -1,0 +1,30 @@
+#cabecalho{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+#pesquisa{
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+#pesquisa input{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(112, 112, 112);
+    background-color: #282828;
+    color: white;
+}
+#pesquisa input:focus{
+    outline: none;
+}
+
+#conteudo_search{
+    width: 100%;
+    height: calc(100vh - 61px);
+}
+#conteudo_search h1{
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}

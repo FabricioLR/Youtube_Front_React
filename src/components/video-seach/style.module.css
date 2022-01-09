@@ -1,0 +1,39 @@
+.video{
+    width: calc(100% - 20px);
+    display: flex;
+    margin: 20px 0px 0px 20px;
+}
+.video video{
+    width: 150px;
+    height: 150px;
+    background-color: whitesmoke;
+    margin-right: 10px;
+}
+#info_video p:first-child{
+    color: white;
+    font-size: 22px;
+    padding-top: 3px;
+}
+#info_video p:nth-child(2){
+    color: rgb(226, 226, 226);
+    font-size: 14px;
+    padding-top: 5px;
+}
+#owner{
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+}
+#image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(147, 147, 147);
+    margin-right: 5px;
+}
+#image img{
+    width: 100%;
+}

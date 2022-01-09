@@ -1,0 +1,66 @@
+@media screen and (min-width: 690px) {
+    #conteudo_cadastro{
+        width: 30%;
+    }
+}
+@media screen and (max-width: 690px) {
+    #conteudo_cadastro{
+        width: 80%;
+    }
+}
+
+#cadastro{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#conteudo_cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 460px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+}
+#conteudo_cadastro p{
+    margin: 20px 0px 50px 0px;
+    font-size: 25px;
+    color: white;
+}
+#conteudo_cadastro div{
+    width: 60%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+#conteudo_cadastro label{
+    font-size: 16px;
+    color: white;
+    margin-bottom: 5px;
+}
+#conteudo_cadastro input{
+    padding: 4px;
+    background-color: #1a1a1a;
+    border: 1px solid #343434;
+    color: white;
+}
+#conteudo_cadastro input:focus{
+    outline: 0px;
+}
+#conteudo_cadastro button{
+    height: 30px;
+    border: none;
+    background-color: #131313;
+    color: white;
+    cursor: pointer;
+}
+#conteudo_cadastro a{
+    text-decoration: none;
+    color: rgb(168, 115, 228);
+}
+#conteudo_cadastro button:hover{
+    background-color: #161616;
+}

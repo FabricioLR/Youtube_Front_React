@@ -1,0 +1,73 @@
+@media screen and (min-width: 690px) {
+    #conteudo_login{
+        width: 30%;
+    }
+}
+@media screen and (max-width: 690px) {
+    #conteudo_login{
+        width: 80%;
+    }
+}
+#login{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#conteudo_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+}
+#conteudo_login p:not(:last-child){
+    margin: 20px 0px 50px 0px;
+    font-size: 25px;
+    color: white;
+}
+#conteudo_login p:last-child{
+    font-size: 13px;
+    color: white;
+    margin-top: 5px;
+}
+#conteudo_login div{
+    width: 60%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+#conteudo_login label{
+    font-size: 16px;
+    color: white;
+    margin-bottom: 5px;
+}
+#conteudo_login input{
+    padding: 4px;
+    background-color: #1a1a1a;
+    border: 1px solid #343434;
+    color: white;
+}
+#conteudo_login input:focus{
+    outline: 0px;
+}
+#conteudo_login button{
+    height: 30px;
+    border: none;
+    background-color: #131313;
+    color: white;
+    cursor: pointer;
+}
+#conteudo_login a{
+    font-size: 13px;
+    margin-top: 5px;
+    text-decoration: none;
+    color: rgb(168, 115, 228);
+    padding-top: 5px;
+}
+#conteudo_login button:hover{
+    background-color: #161616;
+}
