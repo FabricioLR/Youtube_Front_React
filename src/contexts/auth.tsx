@@ -2,16 +2,17 @@ import { createContext, ReactNode, useState, useEffect } from "react"
 import api from "../components/api"
 
 type user = {
-    nome: string,
-    id: number,
+    nome: string
+    id: number
     email: string
+    foto_url: string
 }
 
 type AuthContextData = {
-    user: user | null,
-    ContextLogin: Function,
-    ContextRegister: Function,
-    image: string
+    user: user | null
+    ContextLogin: Function
+    ContextRegister: Function
+    ContextLogOut: Function
 }
 
 export const AuthContex = createContext({} as AuthContextData)
@@ -21,19 +22,18 @@ type AuthProviderProps = {
 }
 
 type LoginProps = {
-    email: string,
+    email: string
     senha: string
 }
 
 type RegisterProps = {
-    email: string,
-    senha: string,
+    email: string
+    senha: string
     nome: string
 }
 
 export function AuthProvider(props: AuthProviderProps){
     const [user, setUser] = useState<user | null>(null)
-    const [image, setImage] = useState("")
 
     async function ContextLogin({email, senha}: LoginProps){
         const response = await api.post("/authenticate", {
@@ -42,9 +42,6 @@ export function AuthProvider(props: AuthProviderProps){
         if (response.data){
             localStorage.setItem("token", response.data.token)
             setUser(response.data.user)
-            if (response.data.user.foto_url !== ""){
-                setImage("https://avatars.githubusercontent.com/u/88409903?v=4")
-            }
         }
     }
 
@@ -55,10 +52,12 @@ export function AuthProvider(props: AuthProviderProps){
         if (response.data){
             localStorage.setItem("token", response.data.token)
             setUser(response.data.user)
-            if (response.data.user.foto_url !== ""){
-                setImage("https://avatars.githubusercontent.com/u/88409903?v=4")
-            }
         }
+    }
+
+    async function ContextLogOut(){
+        localStorage.removeItem("token")
+        setUser(null)
     }
 
     useEffect(() => {
@@ -71,15 +70,12 @@ export function AuthProvider(props: AuthProviderProps){
         api.get("/profile")
         .then((response) => {
             setUser(response.data.user)
-            if (response.data.user.foto_url !== ""){
-                setImage("https://avatars.githubusercontent.com/u/88409903?v=4")
-            }
         })
         .catch((error) => console.log(error.response))
     }, [])
 
     return (
-        <AuthContex.Provider value={{ user, ContextLogin, ContextRegister, image }}>
+        <AuthContex.Provider value={{ user, ContextLogin, ContextRegister, ContextLogOut }}>
             {props.children}
         </AuthContex.Provider>
     )

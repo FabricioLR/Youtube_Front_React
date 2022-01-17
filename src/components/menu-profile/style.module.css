@@ -1,0 +1,57 @@
+#menu{
+    z-index: 10;
+    position: absolute;
+    width: 200px;
+    height: 400px;
+    background-color: #333;
+    left: 100%;
+    transition: 1s;
+}
+#info_profile{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #646464;
+}
+#info_profile p{
+    color: whitesmoke;
+    font-size: 15px;
+}
+#image{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgb(147, 147, 147);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 15px 10px 10px;
+}
+#image img{
+    width: 100%;
+}
+#menu.activeProfile{
+    left: calc(100% - 200px);
+}
+#log_out{
+    margin: 14px;
+    color: #d9d9d9;
+    cursor: pointer;
+}
+#register{
+    margin: 15px;
+    color: #d9d9d9;
+    cursor: pointer;
+}
+#register a{
+    color: #d9d9d9;
+    cursor: pointer;
+}
+#log_in{
+    margin: 14px;
+    color: #d9d9d9;
+    cursor: pointer;
+}
+#log_in a{
+    color: #d9d9d9;
+    cursor: pointer;
+}

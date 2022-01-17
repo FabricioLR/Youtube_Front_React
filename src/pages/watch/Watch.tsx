@@ -18,7 +18,7 @@ type VideoProps = {
 }
 
 function Watch() {
-    const { image } = useContext(AuthContex)
+    const { user } = useContext(AuthContex)
     const [video, setVideo] = useState<VideoProps>()
     const { id } = useParams()
     
@@ -41,7 +41,7 @@ function Watch() {
                     </div>
                     <div id={styleHome.login}>
                         <Link to="/login">
-                            <img src={image || img_login} alt="login"/>
+                            <img src={user ? (user.foto_url === "" ? img_login : user.foto_url) : img_login} alt="login"/>
                         </Link>
                     </div>
                 </div>

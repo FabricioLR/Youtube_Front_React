@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
 import style from "./style.module.css"
 import styleMenu from "../../components/menu-video/style.module.css"
+import styleProfile from "../../components/menu-profile/style.module.css"
 import img_login from "../../images/withoutlogin.png"
 import { Link } from 'react-router-dom'
 import MenuVideo from "../../components/menu-video/MenuVideo"
 import api from "../../components/api"
-import storage from "../../components/firebase"
 import { AuthContex } from '../../contexts/auth'
 import Video from "../../components/video/Video"
 import { useNavigate } from "react-router-dom"
 import { FaSistrix } from "react-icons/fa"
+import MenuProfile from "../../components/menu-profile/MenuProfile"
 
 type SendVideoProps = {
     name: string,
     arquivo: Blob,
-    nome_arquivo: string
 }
 
 type VideoProps = {
@@ -26,9 +26,10 @@ type VideoProps = {
 
 function Home() {
     const navigate = useNavigate()
-    const { user, image } = useContext(AuthContex)
+    const { user } = useContext(AuthContex)
     const [videos, setVideos] = useState([])
     const [nameSearch, setNameSearch] = useState("")
+    const [progress, setProgress] = useState(0)
 
     useEffect(() => {
         api.get("/getvideos")
@@ -37,19 +38,28 @@ function Home() {
         })
     }, [])
 
-    async function SendVideo({ arquivo, name, nome_arquivo }: SendVideoProps){
+    async function SendVideo({ arquivo, name }: SendVideoProps){
         if (user){
-            const upload = storage.ref().child("videos").child(nome_arquivo).put(arquivo)
-            upload.snapshot.ref.getDownloadURL().then(async function(url){
-                api.defaults.headers.common.authorizationtoken = String(localStorage.getItem("token"))
-                const response = await api.post("/addvideo", {
-                    nome: name, url: url, owner: user.id
-                })
-                if (response){
-                    ShowMenu()
-                    window.location.reload()
+            const data = new FormData()
+            data.append("file", arquivo)
+            api.post("/addvideo", data, {
+                headers: {
+                    nome: name, 
+                    owner: String(user.id)
+                },
+                onUploadProgress: (e) => {
+                    const progress_ = Math.round((e.loaded * 100) / e.total)
+                    setProgress(progress + progress_)
+                    if (progress_ === 100){
+                        document.getElementById(styleMenu.container)?.classList.toggle(styleMenu.active_container)
+                        setProgress(0)
+                        window.alert("success")
+                    }
                 }
             })
+        } else {
+            window.alert("user not authenticated")
+            document.getElementById(styleMenu.container)?.classList.toggle(styleMenu.active_container)
         }
     }
 
@@ -70,22 +80,25 @@ function Home() {
         }
     }
 
+    function ShowProfile(){
+        document.getElementById(styleProfile.menu)?.classList.toggle(styleProfile.activeProfile)
+    }
+
     return (
         <>
-            <MenuVideo functionMenu={ShowMenu} functionSendVideo={SendVideo}/>
+            <MenuVideo functionMenu={ShowMenu} functionSendVideo={SendVideo} progress={progress}/>
             <header>
                 <div id={style.cabecalho}>
                     <div id={style.pesquisa}>
                         <input type="text" onChange={(e) => setNameSearch(e.target.value)}/>
                         <FaSistrix style={{color: "white", height: 26, backgroundColor: "#282828", paddingLeft: 7, paddingRight: 7, border: "1px solid rgb(112, 112, 112)", cursor: "pointer"}} onClick={Search}/>
                     </div>
-                    <div id={style.login}>
-                        <Link to="/login">
-                            <img src={image || img_login} alt="login"/>
-                        </Link>
+                    <div id={style.login} onClick={ShowProfile}>
+                        <img src={user ? (user.foto_url === "" ? img_login : user.foto_url) : img_login} alt="login"/>
                     </div>
                 </div>
             </header>
+            <MenuProfile/>
             <main>
                 <div id={style.conteudo}>
                     <div id={style.videos}>
