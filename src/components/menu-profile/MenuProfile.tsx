@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AuthContex } from '../../contexts/auth'
 import style from "./style.module.css"
 import img_login from "../../images/withoutlogin.png"
+import { Link } from 'react-router-dom'
 
 function MenuProfile() {
     const { user, ContextLogOut } = useContext(AuthContex)
@@ -26,10 +27,10 @@ function MenuProfile() {
                 : 
                 <div id={style.menu}>
                     <div id={style.register}>
-                        <a href="/register">Register</a>
+                        <Link to="/register">Register</Link>
                     </div>
                     <div id={style.log_in}>
-                        <a href="/login">Log in</a>
+                        <Link to="/login">Log in</Link>
                     </div>
                 </div>
             }
