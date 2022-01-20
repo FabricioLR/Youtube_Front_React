@@ -3,7 +3,6 @@ import style from "./style.module.css"
 import styleMenu from "../../components/menu-video/style.module.css"
 import styleProfile from "../../components/menu-profile/style.module.css"
 import img_login from "../../images/withoutlogin.png"
-import { Link } from 'react-router-dom'
 import MenuVideo from "../../components/menu-video/MenuVideo"
 import api from "../../components/api"
 import { AuthContex } from '../../contexts/auth'

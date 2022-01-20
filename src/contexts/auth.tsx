@@ -13,6 +13,7 @@ type AuthContextData = {
     ContextLogin: Function
     ContextRegister: Function
     ContextLogOut: Function
+    ContextChangeImage: Function
 }
 
 export const AuthContex = createContext({} as AuthContextData)
@@ -74,8 +75,18 @@ export function AuthProvider(props: AuthProviderProps){
         .catch((error) => console.log(error.response))
     }, [])
 
+    async function ContextChangeImage(image: Blob){
+        const data = new FormData()
+        data.append("file", image)
+        
+        api.defaults.headers.common.authorizationtoken = String(localStorage.getItem("token"))
+
+        const response = await api.post("/ChangeImage", data)
+        console.log(response)
+    }
+
     return (
-        <AuthContex.Provider value={{ user, ContextLogin, ContextRegister, ContextLogOut }}>
+        <AuthContex.Provider value={{ user, ContextLogin, ContextRegister, ContextLogOut, ContextChangeImage }}>
             {props.children}
         </AuthContex.Provider>
     )

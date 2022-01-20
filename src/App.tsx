@@ -4,6 +4,7 @@ import Register from "./pages/register/Register"
 import Home from "./pages/home/Home"
 import Watch from "./pages/watch/Watch"
 import Search from "./pages/search/Search"
+import Profile from "./pages/profile/Profile"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register/>} />
+        <Route path="/profile" element={<Profile/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/watch/:id" element={<Watch/>} />
         <Route path="/search/:nameSearch" element={<Search/>} />

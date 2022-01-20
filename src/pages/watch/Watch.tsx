@@ -2,10 +2,11 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from "react-router-dom"
 import api from '../../components/api'
 import styleHome from "../home/style.module.css"
-import { Link } from 'react-router-dom'
 import img_login from "../../images/withoutlogin.png"
 import { AuthContex } from '../../contexts/auth'
 import style from "./style.module.css"
+import MenuProfile from "../../components/menu-profile/MenuProfile"
+import styleProfile from "../../components/menu-profile/style.module.css"
 
 type VideoProps = {
     nome: string,
@@ -32,6 +33,10 @@ function Watch() {
         .catch((error) => console.log(error.response))
     }, [])
 
+    function ShowMenuProfile(){
+        document.getElementById(styleProfile.menu)?.classList.toggle(styleProfile.activeProfile)
+    }
+
     return (
         <>
             <header>
@@ -39,13 +44,12 @@ function Watch() {
                     <div id={styleHome.pesquisa}>
                         <input type="text"/>
                     </div>
-                    <div id={styleHome.login}>
-                        <Link to="/login">
-                            <img src={user ? (user.foto_url === "" ? img_login : user.foto_url) : img_login} alt="login"/>
-                        </Link>
+                    <div id={styleHome.login} onClick={ShowMenuProfile}>
+                        <img src={user ? (user.foto_url === "" ? img_login : user.foto_url) : img_login} alt="login"/>
                     </div>
                 </div>
             </header>
+            <MenuProfile/>
             <main id={style.conteudo_video}>
                 <div id={style.video}>
                     <video src={video?.url} controls/>

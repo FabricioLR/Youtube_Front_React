@@ -2,7 +2,6 @@
     width: 100%;
     height: calc(100vh - 61px);
 }
-
 #video{
     width: 100%;
 }
@@ -46,4 +45,6 @@
 }
 #image_owner img{
     width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }

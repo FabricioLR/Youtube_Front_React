@@ -10,14 +10,16 @@ function MenuProfile() {
         <>
             {user ?
                 <div id={style.menu}>
-                    <div id={style.info_profile}>
-                        <div id={style.image}>
-                            <img src={user?.foto_url === "" ? img_login : user?.foto_url} alt="" />
+                    <Link to="/profile">
+                        <div id={style.info_profile}>
+                            <div id={style.image}>
+                                <img src={user?.foto_url === "" ? img_login : user?.foto_url} alt="" />
+                            </div>
+                            <div id={style.nome}>
+                                <p>{user.nome}</p>
+                            </div>
                         </div>
-                        <div id={style.nome}>
-                            <p>{user.nome}</p>
-                        </div>
-                    </div>
+                    </Link>
                     <div>
                         <div id={style.log_out} onClick={() => ContextLogOut()}>
                             <p>Log Out</p>
