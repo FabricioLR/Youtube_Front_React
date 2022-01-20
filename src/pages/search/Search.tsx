@@ -58,6 +58,7 @@ function Search() {
                         nome={video.nome}
                         nome_owner={video.users.nome}
                         visualizacoes={video.visualizacoes}
+                        id={String(video.id)}
                         key={video.id}
                     />))}
                 </div>

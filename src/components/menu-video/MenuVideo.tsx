@@ -42,7 +42,7 @@ function MenuVideo(props: MenuVideoProps) {
         <div id={style.menu_postar_video}>
             <div id={style.conteudo_menu}>
                 <div id={style.titulo_sair}>
-                    <h3>Postar Vídeo</h3>
+                    <h3>Add Video</h3>
                     <span onClick={Exit}></span>
                 </div>
                 <div id={style.input}>
