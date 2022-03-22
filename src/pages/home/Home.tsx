@@ -43,8 +43,9 @@ function Home() {
             data.append("file", arquivo)
             api.post("/CreateVideo", data, {
                 headers: {
-                    nome: name, 
-                    owner: String(user.id)
+                    nome: name,
+                    owner: String(user.id),
+                    authorizationtoken: String(localStorage.getItem("token"))
                 },
                 onUploadProgress: (e) => {
                     const progress_ = Math.round((e.loaded * 100) / e.total)
